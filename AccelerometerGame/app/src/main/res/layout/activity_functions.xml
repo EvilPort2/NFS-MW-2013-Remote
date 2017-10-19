@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    tools:context="com.evilport.accelerometergame.FunctionsActivity">
+
+    <Button
+        android:id="@+id/buttonBrightness"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignLeft="@+id/buttonGameMenu"
+        android:layout_alignStart="@+id/buttonGameMenu"
+        android:layout_below="@+id/buttonGameMenu"
+        android:layout_marginTop="29dp"
+        android:onClick="screenBrightness"
+        android:text="Turn down brightness"
+        android:textSize="10dp" />
+
+    <Button
+        android:id="@+id/buttonCarControl"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:onClick="controlCar"
+        android:text="Start controlling car"
+        android:textSize="10dp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <Button
+        android:id="@+id/buttonGameMenu"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Game Menu"
+        android:textSize="10dp"
+        app:layout_constraintLeft_toRightOf="@+id/buttonBrightness"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <Button
+        android:id="@+id/buttonStartRace"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="Start Race"
+        android:textSize="10dp" />
+
+    <SeekBar
+        android:id="@+id/seekBarSensitivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/buttonBrightness"
+        android:layout_marginTop="96dp"/>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/seekBarSensitivity"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerInParent="false"
+        android:layout_marginBottom="20dp"
+        android:text="Sensitivity"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/textViewSensitivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView4"
+        android:layout_alignBottom="@+id/textView4"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="false"
+        android:text="1.0"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/buttonChangeCar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="Change Car"
+        android:textSize="10sp"
+        android:layout_above="@+id/seekBarSensitivity"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/buttonHandBrake"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/buttonBrightness"
+        android:text="Handbrake"
+        android:textSize="10sp" />
+</RelativeLayout>
