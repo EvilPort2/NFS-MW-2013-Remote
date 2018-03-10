@@ -2,7 +2,7 @@ import socket
 from time import *
 import os
 import pyautogui as gui
-import thread
+from threading import Thread
 from win32api import GetKeyState 
 from win32con import VK_NUMLOCK 
 from my_input import PressKey, ReleaseKey
@@ -60,7 +60,7 @@ def move_car(x, y, z, s):
 
 def hand_brake():
 	PressKey(BRAKE)
-	sleep(0.01)
+	sleep(0.08)
 	ReleaseKey(BRAKE)
 
 def game_menu():
@@ -80,8 +80,8 @@ def start_race():
 	def reverse():
 		PressKey(REVERSE)
 		sleep(0.08)
-	thread.start_new_thread(accelerate, ())
-	thread.start_new_thread(reverse, ())
+	Thread(target=accelerate, args=()).start()
+	Thread(target=reverse, args=()).start()
 
 def main():
 	ip = input("Enter this machine's IP address: ")
@@ -135,21 +135,23 @@ def main():
 					move_car(x, y, z, s)
 
 				elif operation == "Handbrake":
+                                        Thread(target=hand_brake, args=()).start()
 					#thread.start_new_thread(hand_brake, ())
-					hand_brake()
+					#hand_brake()
                                            
 				elif operation == "Menu":
-					thread.start_new_thread(game_menu, ())
+                                        Thread(target=game_menu, args=()).start()
+					#thread.start_new_thread(game_menu, ())
 
 				elif operation == "ChangeCar":
-					thread.start_new_thread(change_car, ())
+                                        Thread(target=change_car, args=()).start()
+					#thread.start_new_thread(change_car, ())
 
 				elif operation == "StartRace":
 					start_race()
 
-				else:
-					for k in keys:
-						ReleaseKey(k)
+				elif operation == "ControlOff":
+					continue
 
 		except KeyboardInterrupt:
 			conn.close()
@@ -162,7 +164,7 @@ def main():
 		except TimeoutError:
 			conn.close()
 			serv.close()
-			print ("Client did not respond in time.\n\n")
+			print ("Client did not respond in time or has disconnected.\n\n")
 			input ("Press ENTER to continue....")
 			for k in keys:
 				ReleaseKey(k)
@@ -182,6 +184,7 @@ def main():
 				continue
 			elif ch == 'n' or ch == 'N':
 				print('bye!')
+				exit(0)
 				
 num_lock_off()	
 main()
