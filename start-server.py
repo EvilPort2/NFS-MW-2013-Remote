@@ -31,22 +31,28 @@ def take_turn(direction, y, s):
 
 def move_car(x, y, z, s):
 	if x < -2 and x > -8:
-		thread.start_new_thread(PressKey, (ACCELERATE,))
+                Thread(target=PressKey, args=(ACCELERATE,)).start()
+		#thread.start_new_thread(PressKey, (ACCELERATE,))
 
 	if x > 2 and x < 8:
-		thread.start_new_thread(PressKey, (REVERSE,))
+                Thread(target=PressKey, args=(REVERSE,)).start()
+		#thread.start_new_thread(PressKey, (REVERSE,))
 		
 	if y < -2:
-		thread.start_new_thread(take_turn, (LEFT, y, s))		
+                Thread(target=take_turn, args=(LEFT, y, s)).start()
+		#thread.start_new_thread(take_turn, (LEFT, y, s))		
 
 	if y > 2:
-		thread.start_new_thread(take_turn, (RIGHT, y, s))
+                Thread(target=take_turn, args=(RIGHT, y, s)).start()
+		#thread.start_new_thread(take_turn, (RIGHT, y, s))
 
 	if x < -8:
-		thread.start_new_thread(PressKey, (NITRO,))
+                Thread(target=PressKey, args=(NITRO,)).start()
+		#thread.start_new_thread(PressKey, (NITRO,))
 
 	if x > 8:
-		thread.start_new_thread(PressKey, (BRAKE,))	
+                Thread(target=PressKey, args=(BRAKE,)).start()
+		#thread.start_new_thread(PressKey, (BRAKE,))	
 
 	if abs(x) < 2:
 		ReleaseKey(ACCELERATE)
